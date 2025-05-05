@@ -12,7 +12,7 @@ func _ready() -> void:
 	
 func add_player_instance() -> void:
 	#player = Player.instantiate()
-	add_child(player)
+	#add_child(player)
 	pass
 
 
