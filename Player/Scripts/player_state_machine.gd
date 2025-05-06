@@ -14,17 +14,17 @@ func _ready():
 
 
 func _process(_delta):
-	ChangeState( current_state.Process( _delta ) )
+	change_state( current_state.Process( _delta ) )
 	pass
 
 
 func _physics_process(_delta):
-	ChangeState(current_state.Physics( _delta ) )
+	change_state(current_state.Physics( _delta ) )
 	pass
 
 
 func _unhandled_input(event):
-	ChangeState(current_state.HandleInput( event ) )
+	change_state(current_state.HandleInput( event ) )
 	pass
 
 
@@ -38,14 +38,22 @@ func InitPlayerStateMachine(_player: Player) -> void:
 		if c is State:
 			states.append(c)
 	
-	if states.size() > 0:
-		states[0].player = _player
-		ChangeState( states[0] )
-		process_mode = Node.PROCESS_MODE_INHERIT
+	if states.size() == 0:
+		return
+	
+	states[0].player = _player
+	states[0].state_machine = self
+	
+	
+	for state in states:
+		state.init()
+	
+	change_state( states[0] )
+	process_mode = Node.PROCESS_MODE_INHERIT
 
 
 
-func ChangeState( new_state : State ) -> void:
+func change_state( new_state : State ) -> void:
 	if new_state == null || new_state == current_state:
 		return
 	

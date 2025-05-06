@@ -9,9 +9,5 @@ func _ready():
 
 
 
-func _process(_delta):
-	pass
-
-
 func TakeDamage(hurt_box: HurtBox) -> void:
-	Damaged.emit(hurt_box.damage)
+	Damaged.emit(hurt_box)
