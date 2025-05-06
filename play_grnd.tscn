@@ -1,11 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://cuycrm3st16rv"]
+[gd_scene load_steps=4 format=3 uid="uid://cuycrm3st16rv"]
 
 [ext_resource type="PackedScene" uid="uid://oyej4chyihte" path="res://Tile Maps/Grass1.tscn" id="2_sdyl1"]
 [ext_resource type="PackedScene" uid="uid://d1bco5wl8t5vm" path="res://Enemies/Skeleton/Skeleton.tscn" id="3_ikdsu"]
+[ext_resource type="PackedScene" uid="uid://b8uo6lwql84nn" path="res://Player/player1.tscn" id="3_ocbps"]
 
 [node name="Overworld" type="Node2D"]
 y_sort_enabled = true
 position = Vector2(-2, 1)
+
+[node name="Player" parent="." instance=ExtResource("3_ocbps")]
 
 [node name="Grass1" parent="." instance=ExtResource("2_sdyl1")]
 texture_filter = 1
